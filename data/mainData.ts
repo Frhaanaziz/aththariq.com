@@ -2,12 +2,11 @@ export interface Project {
   type: 'work' | 'self'
   title: string
   description?: string
-  imgSrc: string
+  imgSrc: string[]
   url?: string
   repo?: string
   builtWith: string[]
   hidden?: boolean
-
 }
 
 export interface Company {
@@ -22,13 +21,11 @@ export interface Company {
   description?: string
   descCard?: string
   items: Experience[]
-
 }
 
 export interface TechStackType {
   name: string
   href?: string
-
 }
 export interface Experience {
   title: string
@@ -44,7 +41,7 @@ export interface Experience {
 export interface Skill {
   name: string
   id: string
-  category: "Languages" | "Web Dev" | "AI & Data Science" | "DevOps & Tools" 
+  category: 'Languages' | 'Web Dev' | 'AI & Data Science' | 'DevOps & Tools'
   field?: string
   subfield?: string
   description?: string
@@ -56,64 +53,145 @@ export interface Skill {
 }
 
 export let projectsData: Project[] = [
+  {
+    type: 'work',
+    title: 'CRM (Customer Relationship Management)',
+    description:
+      'This platform is designed to provide a seamless and feature-rich experience by leveraging WebSocket for real-time updates, Twilio Voice for integrated inbound and outbound calling, and a responsive user interface built with Vue.js and Nuxt.js. To maintain zero downtime during updates, we implemented a blue-green deployment strategy, allowing smooth updates without user disruption. Additionally, we developed a persistent Kanban board with user-defined ordering using SQL, empowering teams to manage workflows efficiently. ',
+    repo: 'CRM',
+    imgSrc: [
+      '/static/images/projects/crm-0.jpeg',
+      '/static/images/projects/crm-1.jpeg',
+      '/static/images/projects/crm-2.jpeg',
+      '/static/images/projects/crm-3.jpeg',
+      '/static/images/projects/crm-4.jpeg',
+      '/static/images/projects/crm-5.jpeg',
+      '/static/images/projects/crm-6.jpeg',
+      '/static/images/projects/crm-7.jpeg',
+      '/static/images/projects/crm-8.jpeg',
+    ],
+    url: 'https://app.idb2b.com/',
+    builtWith: [
+      'Typescript',
+      'Vue.js',
+      'Nuxt.js',
+      'Tailwind',
+      'Socket.io',
+      'Twilio',
+      'Supabase',
+      'Postgres',
+      'NGINX',
+    ],
+  },
+  {
+    type: 'work',
+    title: 'Admin Dashboard',
+    description:
+      'This project develops a comprehensive admin dashboard for a travel agency, streamlining management of tours, events, customers, transactions, analytics, reporting, and content. Key features include tour scheduling, customer data tracking, centralized transaction handling with secure payment integration, and dynamic content management. An analytical dashboard provides insights into key metrics, while Role-Based Access Control (RBAC) enhances security by defining role-based permissions. Additionally, flexible API endpoints support external integrations, making this dashboard a robust tool for optimizing operations and enhancing user experience.',
+    imgSrc: [
+      '/static/images/projects/admin-dashboard-0.png',
+      '/static/images/projects/admin-dashboard-1.png',
+      '/static/images/projects/admin-dashboard-2.png',
+      '/static/images/projects/admin-dashboard-3.png',
+      '/static/images/projects/admin-dashboard-4.png',
+      '/static/images/projects/admin-dashboard-5.png',
+    ],
+    url: 'https://tw-admin.aththariq.com/',
+    repo: 'tabungan-wisata',
+    builtWith: [
+      'Typescript',
+      'React',
+      'Next.js',
+      'TRPC',
+      'Tanstact Query',
+      'Socket.io',
+      'Tailwind',
+      'Shadcn UI',
+      'Prisma ORM',
+      'NGINX',
+      'MySQL',
+    ],
+  },
+  {
+    type: 'work',
+    title: 'User Dashboard',
+    description:
+      'This project involves creating a comprehensive user dashboard for a travel agency, offering enhanced user experience and control over travel activities. Key features include integrated top-up with Midtrans for seamless transactions, balance and transaction tracking for clear financial oversight, real-time notifications via WebSocket, and a Progressive Web App (PWA) build for a native app-like experience on mobile. Challenges included implementing ensuring transaction security through data encryption and verification, and maintaining data precision, especially for financial and travel data.',
+    imgSrc: [
+      '/static/images/projects/user-dashboard-0.png',
+      '/static/images/projects/user-dashboard-1.png',
+      '/static/images/projects/user-dashboard-2.png',
+      '/static/images/projects/user-dashboard-3.png',
+      '/static/images/projects/user-dashboard-4.png',
+    ],
+    url: 'https://tw-student.aththariq.com/',
+    repo: 'tabungan-wisata',
+    builtWith: [
+      'Typescript',
+      'React',
+      'Next.js',
+      'Sentry',
+      'Tailwind',
+      'Shadcn UI',
+      'TRPC',
+      'Tanstack Query',
+      'Socket.io',
+      'Prisma ORM',
+      'NGINX',
+      'MySQL',
+    ],
+  },
 
   {
     type: 'work',
-    title: 'FlowPandas',
-    description: 'FlowPandas is an AI BI analyst microservice that allows users to interact with their reports through a chat interface to generate BI insights. The microservice provides text explanations, tables of the data, and visualizations. It connects to an API that supplies JSON data for analysis.',
-    imgSrc: '/static/images/projects/7.jpg',
-    builtWith: ['Redis Stack', 'OpenAI GPT-3.5', 'FastAPI', 'Pandas', 'PandasAI', 'Langchain'],
-  },
-  {
-    type: 'work',
-    title: 'Quality AI',
-    description: 'A full-stack web application assists quality auditors by analyzing support agent calls. It uses the Whisper ASR model to transcribe calls, detects silence gaps, and performs text analysis to flag inappropriate language. The Mistral LLM summarizes calls and evaluates them against predefined criteria to generate a call score. The app integrates with ticketing systems like Zendesk and TeamSupport for real-time ticket updates and supports real-time processing and analysis with deployed ASR and LLM models.',
-    imgSrc: '/static/images/projects/1.jpg',
-    builtWith: ['Mistral LLM', 'Whisper ASR', 'VLLM', 'Sveltekit', 'FastAPI', 'Docker', 'Postgres', 'AWS', 'GitHub', 'NGINX', 'Prisma', 'Tailwind'],
-  },
-  {
-    type: 'work',
-    title: 'AI Support Helper',
-    description: 'AI Support Helper is a microservice integrated with the Teamsupport ticketing system to track new tickets created by clients. It generates possible fixes for tickets and provides outage notifications if a matching outage article is found. The microservice searches for ticket information in a vector database that is updated periodically to ensure its knowledge remains current.',
-    imgSrc: '/static/images/projects/2.jpg',
-    builtWith: ['OpenAI', 'Teamsupport API', 'MySQL', 'Pinecone', 'FastAPI', 'Docker', 'AWS', 'Langchain'],
-  },
-  {
-    type: 'work',
-    title: 'DocChat',
-    description: 'DocChat is a Retrieval-Augmented Generation (RAG) microservice that enables users to interact with documentation. It keeps track of all the content within PDF pages, including text, page numbers, images, categories, and subcategories. This microservice allows for efficient and accurate information retrieval during chats with documentation.',
-    imgSrc: '/static/images/projects/3.jpg',
-    builtWith: ['OpenAI', 'Pinecone', 'FastAPI', 'Docker', 'AWS S3', 'Langchain'],
-  },
-  {
-    type: 'work',
-    title: 'Backlog Classifier',
-    description: 'Backlog Classifier is a tool designed to organize backlog tickets by classifying them into clusters based on their embeddings. It then generates a title for each cluster using a Large Language Model (LLM), streamlining the management and prioritization of tickets.',
-    imgSrc: '/static/images/projects/4.jpg',
-    builtWith: ['OpenAI GPT-3.5', 'OpenAI Ada', 'FastAPI', 'PyTorch', 'Pandas'],
-  },
-  {
-    type: 'work',
-    title: 'Tendering App',
-    description: 'Tendering App is a full-stack application designed to facilitate the tendering process. It allows contractors, consultants, and suppliers to apply to clients\' tenders, which can then be managed by software admins. The app includes an admin page to control all aspects of the application, ensuring efficient and streamlined tender management.',
-    imgSrc: '/static/images/projects/5.jpg',
-    builtWith: ['Next.js', 'Postgres', 'AWS S3', 'Prisma', 'Tailwind'],
+    title: 'Landing Page',
+    description:
+      'This project is a responsive and visually appealing website designed as a homepage for a study tour travel agency, optimized for various devices. Key features include an interactive homepage with essential company information, a comprehensive tour listing page with advanced filters (price, duration, location), and a mobile-friendly design that provides a seamless experience across devices. Built for high performance, the website ensures fast loading times and encourages visitors to explore further.',
+    imgSrc: [
+      '/static/images/projects/landing-page-0.png',
+      '/static/images/projects/landing-page-1.png',
+      '/static/images/projects/landing-page-2.png',
+      '/static/images/projects/landing-page-3.png',
+    ],
+    url: 'https://tw-front.aththariq.com/',
+    repo: 'tabungan-wisata',
+    builtWith: [
+      'Typescript',
+      'React',
+      'Next.js',
+      'Sentry',
+      'Tailwind',
+      'Shadcn UI',
+      'Strapi CMS',
+      'NGINX',
+    ],
   },
   {
     type: 'self',
-    title: 'Personal website',
-    imgSrc: '/static/images/projects/6.jpg',
-    repo: 'andrewsam.xyz',
-    builtWith: ['Next.js', 'Tailwind', 'Typescript', 'Prisma', 'Umami'],
+    title: 'Yahoo Finance Scraper',
+    description:
+      'The Yahoo Finance News Scraper is a TypeScript-based tool that uses Puppeteer to extract news articles from Yahoo Finance across various topics. It allows for configurable scraping of article titles, URLs, and content, while incorporating error handling and type safety.',
+    imgSrc: ['/static/images/projects/1.jpg'],
+    repo: 'yahoo-finance-scraper',
+    builtWith: ['Typescript', 'Puppeteer', 'Node.js'],
   },
-  
-];
+  {
+    type: 'self',
+    title: 'Typescript Node Starter',
+    description:
+      'The TypeScript Node Starter is a template for building Node.js applications with TypeScript, featuring configurations for ESLint and Prettier to maintain code quality. To get started, clone the repository, install dependencies using pnpm, and use various scripts to build, start, develop, lint, and format the code.',
+    imgSrc: ['/static/images/projects/2.jpg'],
+    repo: 'typescript-node-starter',
+    builtWith: ['Typescript', 'ESLint', 'Prettier', 'Node.js'],
+  },
+]
 
 export let experienceData: Company[] = [
   {
     name: 'Valsoft - Aspire',
     location: 'Remote - Canada',
-    description: 'Aspire Software is a division of Valsoft that focuses on acquiring, managing, and building vertical market software businesses.',
+    description:
+      'Aspire Software is a division of Valsoft that focuses on acquiring, managing, and building vertical market software businesses.',
     imgSrc: 'https://www.valsoftcorp.com/wp-content/uploads/2017/10/valsoft-logo.svg',
     url: 'https://www.valsoftcorp.com/',
     active: true,
@@ -122,7 +200,8 @@ export let experienceData: Company[] = [
         title: 'Software Developer - DockMaster',
         roleType: 'Fulltime',
         startDate: '2024/04/15',
-        description: 'Implemented new features and fixed bugs, ensuring the continuous improvement and reliability of the software. Maintained server configurations, ensuring optimal performance and availability. Attended product meetings to ideate and discuss feature enhancements, contributing to the strategic growth and development of the software. Collaborated closely with cross-functional teams to ensure the alignment of development efforts with business goals and user needs. Developing prototypes for AI features to be integrated within the software.',
+        description:
+          'Implemented new features and fixed bugs, ensuring the continuous improvement and reliability of the software. Maintained server configurations, ensuring optimal performance and availability. Attended product meetings to ideate and discuss feature enhancements, contributing to the strategic growth and development of the software. Collaborated closely with cross-functional teams to ensure the alignment of development efforts with business goals and user needs. Developing prototypes for AI features to be integrated within the software.',
         techStack: [
           { name: 'Django', href: 'https://www.djangoproject.com/' },
           { name: 'Python', href: 'https://www.python.org/' },
@@ -144,7 +223,8 @@ export let experienceData: Company[] = [
         roleType: 'Fulltime',
         startDate: '2023/10/15',
         endDate: '2024/04/15',
-        description: 'Developed prototypes for AI features tailored to the hospitality department, enhancing support and operational efficiency. Created a RAG documentation chat for the support team, streamlining access to information and reducing response times. Implemented automated ticket first replies with suggested solutions, improving customer service efficiency and response accuracy. Designed AI-driven BI solutions to generate insights from databases and software APIs, facilitating data-driven decision-making. Developed tools for summarization and classification of backlog tickets, assisting the product team in prioritizing and addressing issues effectively.',
+        description:
+          'Developed prototypes for AI features tailored to the hospitality department, enhancing support and operational efficiency. Created a RAG documentation chat for the support team, streamlining access to information and reducing response times. Implemented automated ticket first replies with suggested solutions, improving customer service efficiency and response accuracy. Designed AI-driven BI solutions to generate insights from databases and software APIs, facilitating data-driven decision-making. Developed tools for summarization and classification of backlog tickets, assisting the product team in prioritizing and addressing issues effectively.',
         techStack: [
           { name: 'FastAPI', href: 'https://fastapi.tiangolo.com/' },
           { name: 'OpenAI', href: 'https://openai.com/' },
@@ -164,7 +244,8 @@ export let experienceData: Company[] = [
         roleType: 'Fulltime',
         startDate: '2022/10/24',
         endDate: '2023/10/15',
-        description: 'Created, configured, tested, and deployed Agora API integration functionalities, ensuring seamless connectivity and optimal performance. Coordinated the implementation of third-party systems connections with active system monitoring, ensuring reliable and efficient integrations. Developed multiple automation tools to facilitate the search and investigation of issues, significantly improving the efficiency of the troubleshooting process.',
+        description:
+          'Created, configured, tested, and deployed Agora API integration functionalities, ensuring seamless connectivity and optimal performance. Coordinated the implementation of third-party systems connections with active system monitoring, ensuring reliable and efficient integrations. Developed multiple automation tools to facilitate the search and investigation of issues, significantly improving the efficiency of the troubleshooting process.',
         techStack: [
           { name: 'Postman', href: 'https://www.postman.com/' },
           { name: 'Testrail', href: 'https://www.gurock.com/testrail' },
@@ -179,8 +260,10 @@ export let experienceData: Company[] = [
   {
     name: 'FlairsTech',
     location: 'Maadi - Egypt',
-    description: 'FlairsTech is a software development company that specializes in building custom software solutions for businesses. We help businesses automate their processes and improve their efficiency.',
-    imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQFEqFIZYFhFpA/company-logo_200_200/0/1630540236589/flairstech_logo?e=1726704000&v=beta&t=AuvxQoMg94CqpL1A2-SOgZIChOIE14uscukufiaUDv0',
+    description:
+      'FlairsTech is a software development company that specializes in building custom software solutions for businesses. We help businesses automate their processes and improve their efficiency.',
+    imgSrc:
+      'https://media.licdn.com/dms/image/C4D0BAQFEqFIZYFhFpA/company-logo_200_200/0/1630540236589/flairstech_logo?e=1726704000&v=beta&t=AuvxQoMg94CqpL1A2-SOgZIChOIE14uscukufiaUDv0',
     url: 'https://flairstech.com/',
     active: true,
     items: [
@@ -188,7 +271,8 @@ export let experienceData: Company[] = [
         title: 'AI Fullstack Developer (Consultant)',
         roleType: 'Consultant',
         startDate: '2023/02/14',
-        description: 'Developed AI solutions for the operations department, enhancing efficiency and performance across various tasks. Created an AI web application for the quality team, reducing call/ticket evaluation time by up to 80% and achieving a 90% utilization rate for overall call evaluations. Led the development and deployment of the web application, handling frontend, backend, AI microservices, server configurations, and deployment.',
+        description:
+          'Developed AI solutions for the operations department, enhancing efficiency and performance across various tasks. Created an AI web application for the quality team, reducing call/ticket evaluation time by up to 80% and achieving a 90% utilization rate for overall call evaluations. Led the development and deployment of the web application, handling frontend, backend, AI microservices, server configurations, and deployment.',
         techStack: [
           { name: 'Mistral LLM', href: '#' },
           { name: 'Whisper ASR', href: '#' },
@@ -206,8 +290,7 @@ export let experienceData: Company[] = [
       },
     ],
   },
-];
-
+]
 
 export let skillsData: Skill[] = [
   {
@@ -238,7 +321,6 @@ export let skillsData: Skill[] = [
     subfield: 'Frameworks',
     level: 'advanced',
     mostUsed: true,
-
   },
   {
     name: 'Tailwind',
@@ -248,7 +330,6 @@ export let skillsData: Skill[] = [
     subfield: 'Styling',
     level: 'advanced',
     mostUsed: true,
-
   },
   {
     name: 'Fiber',
@@ -289,7 +370,6 @@ export let skillsData: Skill[] = [
     description: 'GPTs, Whisper',
     level: 'familiar',
     mostUsed: true,
-
   },
   {
     name: 'LangChain',
@@ -299,7 +379,6 @@ export let skillsData: Skill[] = [
     subfield: 'Frameworks',
     level: 'familiar',
     mostUsed: true,
-
   },
   {
     name: 'Python',
@@ -307,7 +386,6 @@ export let skillsData: Skill[] = [
     category: 'Languages',
     level: 'familiar',
     mostUsed: true,
-
   },
   {
     name: 'C Lang',
@@ -329,7 +407,6 @@ export let skillsData: Skill[] = [
     field: 'Backend',
     level: 'familiar',
     mostUsed: true,
-
   },
   {
     name: 'Django',
@@ -352,7 +429,6 @@ export let skillsData: Skill[] = [
     field: 'Containers',
     level: 'advanced',
     mostUsed: true,
-
   },
   {
     name: 'AWS',
@@ -427,7 +503,6 @@ export let skillsData: Skill[] = [
     subfield: 'Databases',
     level: 'advanced',
     hidden: true,
-
   },
   {
     name: 'MongoDB',
@@ -445,7 +520,6 @@ export let skillsData: Skill[] = [
     subfield: 'Databases',
     level: 'advanced',
     mostUsed: true,
-
   },
   {
     name: 'MySQL',
@@ -463,7 +537,6 @@ export let skillsData: Skill[] = [
     subfield: 'Databases',
     level: 'advanced',
     mostUsed: true,
-
   },
   {
     name: 'Bootstrap',
@@ -716,8 +789,7 @@ export let skillsData: Skill[] = [
     category: 'DevOps & Tools',
     field: 'DevOps & Tools',
     level: 'advanced',
-    hidden: true
-
+    hidden: true,
   },
   {
     name: 'Tableau',
@@ -739,22 +811,23 @@ export let skillsData: Skill[] = [
     category: 'DevOps & Tools',
     field: 'Tools',
     level: 'advanced',
-  },  {
+  },
+  {
     name: 'PNPM',
     id: 'pnpm',
     category: 'DevOps & Tools',
     field: 'Tools',
     level: 'advanced',
-    hidden: true
+    hidden: true,
   },
-   {
+  {
     name: 'Github Actions',
     id: 'githubactions',
     category: 'DevOps & Tools',
     field: 'Deployment',
     level: 'advanced',
   },
-   {
+  {
     name: 'Framer Motion',
     id: 'framermotion',
     category: 'Web Dev',
@@ -790,4 +863,3 @@ export let skillsData: Skill[] = [
     level: 'advanced',
   },
 ]
-

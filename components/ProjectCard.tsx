@@ -7,26 +7,56 @@ import { GithubRepo } from '@/components/GithubRepo'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
+
 interface SWRResponse {
   repository: GithubRepository
 }
 export function ProjectCard({ project }: ProjectCardProps) {
   const { title, description, imgSrc, url, repo, builtWith } = project
-  const { data } = useSWR(repo ? `/api/github?repo=${repo}` : null, swrFetcher)
-  const repository: GithubRepository | undefined = data?.repository
+  const { data } = useSWR<SWRResponse>(repo ? `/api/github?repo=${repo}` : null, swrFetcher)
+  const repository = data?.repository
   const href = repository?.url || url
 
   return (
     <Card className="md m-2 max-w-[544px] border-0 p-2 shadow-lg ">
       <div className="flex h-full flex-col overflow-hidden rounded-lg border border-transparent">
-        <Image
-          alt={title}
-          src={imgSrc}
-          className="h-36 object-cover object-center lg:h-60"
-          width={1088}
-          height={612}
-          // objectFit="cover"
-        />
+        {imgSrc.length > 1 ? (
+          <Carousel plugins={[Autoplay({ delay: Math.floor(Math.random() * 5000) + 2000 })]}>
+            <CarouselContent>
+              {imgSrc.map((src) => (
+                <CarouselItem key={src}>
+                  <Image
+                    alt={title}
+                    src={src}
+                    className="h-36 object-cover object-center lg:h-60"
+                    width={1088}
+                    height={612}
+                    // objectFit="cover"
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        ) : (
+          <Image
+            alt={title}
+            src={imgSrc[0]}
+            className="h-36 object-cover object-center lg:h-60"
+            width={1088}
+            height={612}
+            // objectFit="cover"
+          />
+        )}
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
           <div className="space-y-3">
             <h2 className="text-2xl font-bold leading-8 tracking-tight">
@@ -56,7 +86,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
 
             {repository ? (
-              <GithubRepo repo={repository} />
+              <GithubRepo repo={repository} url={url} />
             ) : (
               url && (
                 <Link

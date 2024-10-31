@@ -2,7 +2,7 @@
 import IconsBundle from '@/components/social-icons'
 import type { GithubRepository } from '@/types/server'
 
-export function GithubRepo({ repo }: { repo: GithubRepository }) {
+export function GithubRepo({ repo, url }: { repo: GithubRepository; url?: string }) {
   const mainLanguage = repo.languages[0]
   return (
     <div className="flex items-center justify-between">
@@ -30,7 +30,7 @@ export function GithubRepo({ repo }: { repo: GithubRepository }) {
         {repo.homepageUrl && (
           <>
             <a
-              href={repo.homepageUrl}
+              href={url ? url : repo.homepageUrl}
               target="_blank"
               rel="noreferrer"
               className="flex items-center"
