@@ -31,9 +31,9 @@ export default function Footer() {
               <li>
                 <IconsBundle kind="instagram" href={siteMetadata.instagram} size={5} />
               </li>
-              <li>
+              {/* <li>
                 <IconsBundle kind="buymeacoffee" href={siteMetadata.buymeacoffee} size={5} />
-              </li>
+              </li> */}
               {/* <li>
               <IconsBundle kind="twitter" href={siteMetadata.twitter} size={6} />
             </li> */}
