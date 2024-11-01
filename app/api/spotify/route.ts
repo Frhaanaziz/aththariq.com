@@ -40,8 +40,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
-          grant_type: 'refresh_token',
-          refresh_token,
+          grant_type: 'authorization_code',
+          code: refresh_token,
+          redirect_uri: 'https://aththariq.com',
         }),
         next: {
           revalidate: 3600,
@@ -106,6 +107,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
           return NextResponse.json({ message: 'No data' }, { status: 204 })
         }
         const data = await response.json()
+        console.log('top-tracks', data)
         return NextResponse.json(data, { status: 200 })
       } catch (error) {
         return NextResponse.json(
