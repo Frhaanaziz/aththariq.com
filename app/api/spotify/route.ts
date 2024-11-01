@@ -53,8 +53,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
         },
       })
 
-      console.log('getAccessToken response', await response.json())
-      return response.json()
+      const data = await response.json()
+      console.log('getAccessToken response', data)
+      return data
     }
 
     const getNowPlaying = async () => {
