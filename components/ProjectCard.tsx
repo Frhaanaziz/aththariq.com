@@ -29,7 +29,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <Card className="md m-2 max-w-[544px] border-0 p-2 shadow-lg ">
       <div className="flex h-full flex-col overflow-hidden rounded-lg border border-transparent">
         {imgSrc.length > 1 ? (
-          <Carousel plugins={[Autoplay({ delay: Math.floor(Math.random() * 5000) + 2000 })]}>
+          <Carousel plugins={[Autoplay({ delay: Math.floor(Math.random() * 3000) + 1000 })]}>
             <CarouselContent>
               {imgSrc.map((src) => (
                 <CarouselItem key={src}>
