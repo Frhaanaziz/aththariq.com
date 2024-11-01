@@ -5,7 +5,6 @@ import { Separator } from '@/components/ui/separator'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { skillsData } from '@/data/mainData'
 import IconsBundle from '../social-icons'
 import { experienceData, type Experience, type TechStackType } from '@/data/mainData'
 import {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -21,13 +21,12 @@ import { LuChevronLeft as ChevronLeft } from 'react-icons/lu'
 import { LuChevronRight as ChevronRight } from 'react-icons/lu'
 
 import { Pagination, PaginationContent, PaginationItem } from '@/components/ui/pagination'
-// import { Input } from '@/components/ui/input'
-// import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { skillsData } from '@/data/mainData'
 import { type Skill } from '@/data/mainData'
 import IconsBundle from '../social-icons'
 import { useState } from 'react'
+import { cn } from '@/lib/utils'
 
 function filterSkillsData(skillsData: Skill[]) {
   // returns an object with each category as a key and an array of skills as the value
@@ -114,12 +113,17 @@ export function Technologies() {
                       {filteredSkillsData[category].map((skill) => (
                         <HybridTooltip key={skill.id}>
                           <HybridTooltipTrigger asChild>
-                            <Button
-                              className={`h-14 p-2 sm:p-2 ${skill.level === 'learning' ? 'border border-green-300' : ''}`}
-                              variant="outline"
+                            <a
+                              className={cn(
+                                buttonVariants({ variant: 'outline' }),
+                                'h-14 p-2 sm:p-2',
+                                skill.level === 'learning' && 'border border-green-300'
+                              )}
+                              target="_blank"
+                              href={skill.href}
                             >
                               <IconsBundle kind={skill.id} size={10} iconType="icon" />
-                            </Button>
+                            </a>
                           </HybridTooltipTrigger>
                           <HybridTooltipContent className="w-auto">
                             {skill.name}

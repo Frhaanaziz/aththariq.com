@@ -90,9 +90,17 @@ import {
   Locust,
   Fiber,
   Stripe,
+  VueJs,
+  NuxtJs,
+  Twilio,
+  Supabase,
+  Midtrans,
+  Sentry,
+  Zod,
+  TRPC,
+  NestJs,
 } from './icons'
 
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
@@ -124,6 +132,11 @@ import { LuCandy } from 'react-icons/lu'
 import { SiBuymeacoffee } from 'react-icons/si'
 
 const components = {
+  vuejs: VueJs,
+  nuxtjs: NuxtJs,
+  twilio: Twilio,
+  supabase: Supabase,
+  jira: Jira,
   candy: LuCandy,
   buymeacoffee: SiBuymeacoffee,
   pizza: LuPizza,
@@ -176,7 +189,6 @@ const components = {
   html: HTML,
   javascript: JavaScript,
   json: JSON,
-  jira: Jira,
   kaggle: Kaggle,
   kub: Kub,
   nginx: NGINX,
@@ -238,6 +250,11 @@ const components = {
   vllm: VLLM,
   fiber: Fiber,
   stripe: Stripe,
+  midtrans: Midtrans,
+  sentry: Sentry,
+  zod: Zod,
+  trpc: TRPC,
+  nestjs: NestJs,
 }
 
 type IconsBundleProps = {
