@@ -54,6 +54,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     const getNowPlaying = async () => {
       const { access_token } = await getAccessToken()
+      console.info('getNowPlaying access_token', access_token)
 
       return fetch(NOW_PLAYING_ENDPOINT, {
         headers: {
@@ -67,6 +68,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     const getTopTracks = async () => {
       const { access_token } = await getAccessToken()
+      console.info('getTopTracks access_token', access_token)
 
       return fetch(TOP_TRACKS_ENDPOINT, {
         headers: {
@@ -79,6 +81,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       try {
         const response = await getNowPlaying()
         if (response.status === 204 || response.status > 400) {
+          console.error(`now-playing: ${response.status}`)
           return NextResponse.json({ isPlaying: false }, { status: 200 })
         }
         const responseData = await response.json()
@@ -93,6 +96,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
         return NextResponse.json(data, { status: 200 })
       } catch (error) {
+        console.error('now-playing', error)
         return NextResponse.json(
           { message: 'Unable to fetch now playing data', error: error?.toString() },
           { status: 500 }
@@ -104,12 +108,14 @@ export async function GET(req: NextRequest, res: NextResponse) {
       try {
         const response = await getTopTracks()
         if (response.status === 204 || response.status > 400) {
+          console.error(`top-tracks: ${response.status}`)
           return NextResponse.json({ message: 'No data' }, { status: 204 })
         }
+
         const data = await response.json()
-        console.log('top-tracks', data)
         return NextResponse.json(data, { status: 200 })
       } catch (error) {
+        console.error('top-tracks', error)
         return NextResponse.json(
           { message: 'Unable to fetch top tracks data', error: error?.toString() },
           { status: 500 }
