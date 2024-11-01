@@ -33,7 +33,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
     const getAccessToken = async () => {
-      const response = await fetch(TOKEN_ENDPOINT, {
+      const authorizationRes = await fetch(TOKEN_ENDPOINT, {
         method: 'POST',
         headers: {
           Authorization: `Basic ${basic}`,
@@ -44,12 +44,22 @@ export async function GET(req: NextRequest, res: NextResponse) {
           code: refresh_token,
           redirect_uri: 'https://www.aththariq.com',
         }),
-        // next: {
-        //   revalidate: 3600,
-        // },
       })
+      const { refresh_token: newRefreshToken } = await authorizationRes.json()
 
+      const response = await fetch(TOKEN_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          Authorization: `Basic ${basic}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          grant_type: 'refresh_token',
+          refresh_token: newRefreshToken,
+        }),
+      })
       const data = await response.json()
+
       console.log('getAccessToken response', data)
       return data
     }
@@ -62,9 +72,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
-        // next: {
-        //   revalidate: 30,
-        // },
       })
     }
 
