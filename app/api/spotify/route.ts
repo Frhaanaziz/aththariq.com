@@ -14,6 +14,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const client_id = env.SPOTIFY_CLIENT_ID || ''
     const client_secret = env.SPOTIFY_CLIENT_SECRET || ''
     const refresh_token = env.SPOTIFY_REFRESH_TOKEN || ''
+    const code = process.env.SPOTIFY_CODE || ''
 
     if (!client_id || !client_secret || !refresh_token) {
       return NextResponse.json(
@@ -33,20 +34,21 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
     const getAccessToken = async () => {
-      const authorizationRes = await fetch(TOKEN_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          Authorization: `Basic ${basic}`,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          grant_type: 'authorization_code',
-          code: refresh_token,
-          redirect_uri: 'https://www.aththariq.com',
-        }),
-      })
-      const { refresh_token: newRefreshToken } = await authorizationRes.json()
-
+      // const response = await fetch(TOKEN_ENDPOINT, {
+      //   method: 'POST',
+      //   headers: {
+      //     Authorization: `Basic ${basic}`,
+      //     'Content-Type': 'application/x-www-form-urlencoded',
+      //   },
+      //   body: new URLSearchParams({
+      //     grant_type: 'authorization_code',
+      //     code,
+      //     redirect_uri: 'https://aththariq.com',
+      //   }),
+      //   next: {
+      //     revalidate: 3600,
+      //   },
+      // })
       const response = await fetch(TOKEN_ENDPOINT, {
         method: 'POST',
         headers: {
@@ -55,29 +57,33 @@ export async function GET(req: NextRequest, res: NextResponse) {
         },
         body: new URLSearchParams({
           grant_type: 'refresh_token',
-          refresh_token: newRefreshToken,
+          refresh_token,
         }),
+        next: {
+          revalidate: 3600,
+        },
       })
-      const data = await response.json()
 
-      console.log('getAccessToken response', data)
+      const data = await response.json()
+      console.log('responseData', data)
       return data
     }
 
     const getNowPlaying = async () => {
       const { access_token } = await getAccessToken()
-      console.info('getNowPlaying access_token', access_token)
 
       return fetch(NOW_PLAYING_ENDPOINT, {
         headers: {
           Authorization: `Bearer ${access_token}`,
+        },
+        next: {
+          revalidate: 30,
         },
       })
     }
 
     const getTopTracks = async () => {
       const { access_token } = await getAccessToken()
-      console.info('getTopTracks access_token', access_token)
 
       return fetch(TOP_TRACKS_ENDPOINT, {
         headers: {
@@ -120,7 +126,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
           console.error(`top-tracks: ${response.status}`)
           return NextResponse.json({ message: 'No data' }, { status: 204 })
         }
-
         const data = await response.json()
         return NextResponse.json(data, { status: 200 })
       } catch (error) {
