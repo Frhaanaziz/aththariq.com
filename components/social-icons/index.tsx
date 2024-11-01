@@ -99,6 +99,7 @@ import {
   Zod,
   TRPC,
   NestJs,
+  Strapi,
 } from './icons'
 
 import { Button } from '@/components/ui/button'
@@ -132,6 +133,7 @@ import { LuCandy } from 'react-icons/lu'
 import { SiBuymeacoffee } from 'react-icons/si'
 
 const components = {
+  strapi: Strapi,
   vuejs: VueJs,
   nuxtjs: NuxtJs,
   twilio: Twilio,

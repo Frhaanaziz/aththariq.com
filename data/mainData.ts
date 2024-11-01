@@ -259,6 +259,18 @@ export let skillsData: Skill[] = [
     mostUsed: true,
   },
   {
+    name: 'Svelte',
+    id: 'svelte',
+    category: 'Web Dev',
+    href: 'https://svelte.dev/',
+  },
+  {
+    name: 'SvelteKit',
+    id: 'sveltekit',
+    category: 'Web Dev',
+    href: 'https://svelte.dev/docs/kit/introduction',
+  },
+  {
     name: 'NestJS',
     id: 'nestjs',
     category: 'Web Dev',
@@ -322,18 +334,6 @@ export let skillsData: Skill[] = [
     href: 'https://nginx.org/en/',
   },
   {
-    name: 'Svelte',
-    id: 'svelte',
-    category: 'Web Dev',
-    href: 'https://svelte.dev/',
-  },
-  {
-    name: 'SvelteKit',
-    id: 'sveltekit',
-    category: 'Web Dev',
-    href: 'https://svelte.dev/docs/kit/introduction',
-  },
-  {
     name: 'Zod',
     id: 'zod',
     category: 'Web Dev',
@@ -350,6 +350,12 @@ export let skillsData: Skill[] = [
     id: 'trpc',
     category: 'Web Dev',
     href: 'https://trpc.io/',
+  },
+  {
+    name: 'Strapi',
+    id: 'strapi',
+    category: 'Web Dev',
+    href: 'https://strapi.io/',
   },
   {
     name: 'Docker',
