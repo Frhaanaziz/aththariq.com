@@ -33,10 +33,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
     const getAccessToken = async () => {
-      console.info('getAccessToken refresh_token', refresh_token)
-      console.info('getAccessToken client_id', client_id)
-      console.info('getAccessToken client_secret', client_secret)
-      console.info('getAccessToken basic', basic)
       const response = await fetch(TOKEN_ENDPOINT, {
         method: 'POST',
         headers: {
@@ -46,7 +42,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         body: new URLSearchParams({
           grant_type: 'authorization_code',
           code: refresh_token,
-          redirect_uri: 'https://aththariq.com',
+          redirect_uri: 'https://www.aththariq.com',
         }),
         next: {
           revalidate: 3600,
