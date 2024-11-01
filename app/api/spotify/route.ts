@@ -33,6 +33,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
     const getAccessToken = async () => {
+      console.info('getAccessToken refresh_token', refresh_token)
+      console.info('getAccessToken client_id', client_id)
+      console.info('getAccessToken client_secret', client_secret)
       const response = await fetch(TOKEN_ENDPOINT, {
         method: 'POST',
         headers: {
