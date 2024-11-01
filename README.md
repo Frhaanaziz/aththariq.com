@@ -2,9 +2,6 @@
 
 # Tailwind, NextJs, ShadCN Personal Blog
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/andrew-sameh/andrewsam.xyz?style=social)](https://GitHub.com/andrew-sameh/andrewsam.xyz/stargazers/)
-[![GitHub forks](https://img.shields.io/github/forks/andrew-sameh/andrewsam.xyz?style=social)](https://GitHub.com/andrew-sameh/andrewsam.xyz/network/)
-
 This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [ShadCN](https://shadcn.com/) personal blog based on Next App directory with [React Server Component](https://nextjs.org/docs/getting-started/react-essentials#server-components) and uses [Contentlayer](https://www.contentlayer.dev/) to manage markdown content.
 
 Check out the documentation below to get started.
@@ -46,7 +43,7 @@ Check out the documentation below to get started.
 1. Clone the repo
 
 ```bash
-npx degit 'andrew-sameh/andrewsam.xyz'
+npx degit 'frhaanaziz/aththariq.com'
 ```
 
 2. Personalize `siteMetadata.js` (site related information)
@@ -171,7 +168,3 @@ canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-t
 - [Base Template - timlrx/tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
 - [GLB Model - tamminen](https://sketchfab.com/tamminen)
 - [Resume Section - leohuynh](https://www.leohuynh.dev/resume/)
-
-## Licence
-
-[MIT](https://github.com/andrew-sameheh/andrewsam.xyz/blob/main/LICENSE) © [Andrew Sameh](https://www.andrewsam.xyz)
