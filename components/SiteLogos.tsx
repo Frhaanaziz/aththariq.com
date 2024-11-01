@@ -52,10 +52,10 @@ const SiteLogo = ({
           <div className="flex items-center justify-between">
             <Image
               src={imagePath}
-              alt={'Andrew Sam'}
+              alt={'Farhan Aziz'}
               width={`${pxWidth}`}
               height={`${pxHeight}`}
-              title={'Andrew Sam'}
+              title={'Farhan Aziz'}
               priority={true} // {false} | {true}
               className={cn('drop-shadow-lg filter', className)}
             />
@@ -76,10 +76,10 @@ const SiteLogo = ({
         <div className="flex items-center justify-between">
           <Image
             src={imagePath}
-            alt={'Andrew Sam'}
+            alt={'Farhan Aziz'}
             width={`${pxWidth}`}
             height={`${pxHeight}`}
-            title={'Andrew Sam'}
+            title={'Farhan Aziz'}
             priority={true} // {false} | {true}
             className={cn('drop-shadow-lg filter', className)}
           />
@@ -91,10 +91,10 @@ const SiteLogo = ({
     return (
       <Image
         src={imagePath}
-        alt={'Andrew Sam'}
+        alt={'Farhan Aziz'}
         width={`${pxWidth}`}
         height={`${pxHeight}`}
-        title={'Andrew Sam'}
+        title={'Farhan Aziz'}
         priority={true} // {false} | {true}
         className={cn('drop-shadow-lg filter', className)}
       />

@@ -38,7 +38,7 @@ export default function Hero() {
       <ModelViewer />
       <div>
         <ul id="bios" className="hidden">
-          <li>Hi it's Andrew!</li>
+          <li>Hi it's Farhan!</li>
         </ul>
         <span
           ref={el}
