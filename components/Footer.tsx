@@ -56,9 +56,7 @@ export default function Footer() {
             <ul className="flex space-x-2">
               <li>{`© ${new Date().getFullYear()}`}</li>
               <li>{` • `}</li>
-              <li>
-                <Link href="/">{siteMetadata.title}</Link>
-              </li>
+              <li>{siteMetadata.title}</li>
               <li>{` • `}</li>
               <li>
                 <IconsBundle kind="githubFork" href={siteMetadata.siteRepo} size={5} />
@@ -90,22 +88,8 @@ export default function Footer() {
                 <IconsBundle kind="shadcn" href={`https://ui.shadcn.com/`} size={5} hover={false} />
               </li>
               <li>
-                <IconsBundle
-                  kind="mongodb"
-                  href={`https://www.mongodb.com/`}
-                  size={5}
-                  hover={false}
-                />
-              </li>
-              <li>
-                <IconsBundle kind="prisma" href={`https://www.prisma.io/`} size={5} hover={false} />
-              </li>
-              <li>
                 <IconsBundle kind="umami" href={`https://umami.is/`} size={5} hover={false} />
               </li>
-              {/* <li>
-              <IconsBundle kind="markdown" href={`mailto:${"siteMetadata.linkedin"}`} size={5}  hover={false}/>
-            </li> */}
             </ul>
           </div>
         </div>
