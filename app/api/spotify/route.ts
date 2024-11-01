@@ -44,9 +44,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
           code: refresh_token,
           redirect_uri: 'https://www.aththariq.com',
         }),
-        next: {
-          revalidate: 3600,
-        },
+        // next: {
+        //   revalidate: 3600,
+        // },
       })
 
       const data = await response.json()
@@ -62,9 +62,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
-        next: {
-          revalidate: 30,
-        },
+        // next: {
+        //   revalidate: 30,
+        // },
       })
     }
 
