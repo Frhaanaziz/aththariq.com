@@ -10,7 +10,6 @@ export const env = createEnv({
     SPOTIFY_CLIENT_SECRET: z.string().optional(),
     SPOTIFY_CLIENT_ID: z.string().optional(),
     GITHUB_API_TOKEN: z.string().optional(),
-    GITHUB_API_URL: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url(),
@@ -22,7 +21,6 @@ export const env = createEnv({
     SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
     GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN,
-    GITHUB_API_URL: process.env.GITHUB_API_URL,
 
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_UMAMI_ID: process.env.NEXT_UMAMI_ID,
