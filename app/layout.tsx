@@ -16,7 +16,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { TailwindIndicator } from '@/components/TailwindIndicator'
 
 const fontSans = FontSans({
-  subsets: ['latin'],
+  subsets: ['latin-ext'],
   variable: '--font-sans',
 })
 

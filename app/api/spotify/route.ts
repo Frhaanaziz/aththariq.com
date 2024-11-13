@@ -65,7 +65,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
       })
 
       const data = await response.json()
-      console.log('responseData', data)
       return data
     }
 

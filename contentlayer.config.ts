@@ -24,7 +24,6 @@ import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 
-
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -93,7 +92,7 @@ function createSearchIndex(allBlogs) {
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: isProduction ?  'blog/**/*.mdx' : 'blog_examples/**/*.mdx' ,
+  filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -124,7 +123,6 @@ export const Blog = defineDocumentType(() => ({
         image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
         url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
         author: doc.authors,
-
       }),
     },
   },
@@ -170,10 +168,9 @@ export const Resume = defineDocumentType(() => ({
   computedFields,
 }))
 
-
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors,Resume],
+  documentTypes: [Blog, Authors, Resume],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [

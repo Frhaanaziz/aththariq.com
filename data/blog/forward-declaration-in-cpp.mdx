@@ -1,0 +1,100 @@
+---
+title: 'Forward Declaration in C++'
+date: '2024-11-13'
+lastmod: '2024-11-13'
+tags: ['today-i-learned', 'c++']
+summary: 'Today I learned that, while C++ doesn’t hoist declarations like JavaScript, forward declaration provides a similar workaround for organizing code and reducing compile-time dependencies.'
+thumbnail: '/static/images/projects/2.jpg'
+images: ['/static/images/projects/2.jpg']
+authors: ['default']
+layout: PostLayout
+---
+
+As someone who has recently started learning C++ after a background in JavaScript or TypeScript, I’ve noticed a few differences that might surprise anyone who’s familiar with JavaScript. One of those is the concept of **Forward Declaration** in C++. Unlike JavaScript, which has mechanisms like **hoisting** that allow you to call functions before they are defined in the code, C++ requires a different approach. In this article, I'll walk you through what forward declaration is, why it’s necessary, and how to use it effectively.
+
+### What is Forward Declaration?
+
+In C++, **forward declaration** is a technique used to inform the compiler about the existence of an identifier (like a function or a class) before fully defining it. In other words, it tells the compiler, “There’s something by this name, and I’ll define it later.”
+
+In JavaScript, hoisting allows us to declare variables and functions even after we’ve used them earlier in the code. For example:
+
+```javascript
+console.log(greet()) // Outputs: Hello!
+
+function greet() {
+  return 'Hello!'
+}
+```
+
+The above JavaScript code works fine because of hoisting, which moves function declarations to the top of their scope during the compile phase. But in C++, there’s no automatic hoisting. You must declare (or define) a function or a class before you can use it in your code. This is where forward declaration comes in.
+
+### Why is Forward Declaration Needed in C++?
+
+Forward declaration is necessary in C++ for two main reasons:
+
+1. **Compilation Order**: In C++, the code is compiled line by line, from top to bottom. The compiler needs to know about the existence of a function or a class before it can be used.
+
+### How to Use Forward Declaration in C++
+
+The syntax for forward declaration is straightforward. You only need to declare the function or class without providing its full definition.
+
+#### Example 1: Forward Declaration of a Function
+
+Suppose we have two functions where one needs to call the other, but the function call appears before the function definition. In C++, you would use forward declaration as follows:
+
+```cpp
+#include <iostream>
+
+void greet(); // Forward declaration
+
+int main() {
+    greet();
+    return 0;
+}
+
+void greet() {
+    std::cout << "Hello, World!" << std::endl;
+}
+```
+
+In this example, we forward-declare the `greet()` function before the `main()` function so that when `main()` calls `greet()`, the compiler knows that `greet()` exists and will find its definition later.
+
+#### Example 2: Forward Declaration of a Class
+
+In the case of classes, forward declaration becomes especially useful when you have two classes that reference each other. Here’s a scenario:
+
+```cpp
+#include <iostream>
+
+class B; // Forward declaration of class B
+
+class A {
+public:
+    void show(B& b);
+};
+
+class B {
+public:
+    void display() {
+        std::cout << "Class B" << std::endl;
+    }
+};
+
+void A::show(B& b) {
+    b.display();
+}
+```
+
+In this example, class `A` references class `B`, but `B` is defined later in the code. By forward-declaring `B`, we allow the compiler to recognize `B` as a type, even though its full definition is still pending.
+
+### Key Differences from JavaScript
+
+For those of us coming from JavaScript, here are a few important differences to keep in mind:
+
+- **No hoisting**: C++ doesn't have hoisting, so declarations must come before usage.
+- **Static Typing**: In C++, types must be known at compile time, which is why declarations are essential.
+- **Header files and compilation units**: Unlike JavaScript, C++ programs are divided into multiple compilation units, and forward declarations help manage dependencies between them.
+
+### Conclusion
+
+Forward declaration may seem unusual if you're used to JavaScript or TypeScript, where hoisting takes care of function and variable declarations. In C++, forward declaration is a powerful tool that helps control the order of declarations, manage dependencies, and even improve compilation efficiency. Embracing this concept is a significant step forward in understanding how C++ compilers work and becoming proficient in C++.

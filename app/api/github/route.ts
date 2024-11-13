@@ -78,7 +78,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     )
     return NextResponse.json({ message: 'ok', repository }, { status: 200 })
   } catch (error) {
-    console.log('error: ' + error)
+    console.error('error: ' + error)
     if (error instanceof GraphqlResponseError) {
       return NextResponse.json(
         { message: error?.errors?.[0]?.message || 'Error message not available' },
