@@ -100,6 +100,7 @@ import {
   TRPC,
   NestJs,
   Strapi,
+  Cpp,
 } from './icons'
 
 import { Button } from '@/components/ui/button'
@@ -257,6 +258,7 @@ const components = {
   zod: Zod,
   trpc: TRPC,
   nestjs: NestJs,
+  cpp: Cpp,
 }
 
 type IconsBundleProps = {

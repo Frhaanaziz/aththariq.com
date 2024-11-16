@@ -231,6 +231,13 @@ export let skillsData: Skill[] = [
     mostUsed: true,
   },
   {
+    name: 'C++',
+    id: 'cpp',
+    category: 'Languages',
+    href: 'https://isocpp.org/',
+    level: 'learning',
+  },
+  {
     name: 'React',
     id: 'react',
     category: 'Web Dev',
