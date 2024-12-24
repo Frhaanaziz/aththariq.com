@@ -61,7 +61,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <div className="space-y-3">
             <h2 className="text-2xl font-bold leading-8 tracking-tight">
               {href ? (
-                <Link href={href} aria-label={`Link to ${title}`}>
+                <Link href={href} aria-label={`Link to ${title}`} target="_blank">
                   <span data-umami-event="project-title-link">{title}</span>
                 </Link>
               ) : (
@@ -93,6 +93,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   href={url}
                   className="hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium leading-6 text-primary-500"
                   aria-label={`Link to ${title}`}
+                  target="_blank"
                 >
                   <span data-umami-event="project-learn-more">Learn More &rarr;</span>
                 </Link>

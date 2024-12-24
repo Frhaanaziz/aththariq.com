@@ -48,7 +48,36 @@ export interface Skill {
   mostUsed?: boolean
 }
 
-export let projectsData: Project[] = [
+export const projectsData: Project[] = [
+  {
+    type: 'work',
+    title: 'Fajar Samudera',
+    description:
+      'This project develops an integrated expedition management system for streamlining logistics operations, leveraging TypeScript, React, Next.js, and Prisma ORM. Key features include Role-Based Authentication, PWA capabilities, shipment tracking, staff management, and a customer self-service portal. The system optimizes operations through digital tracking, reduces customer service workload, and enhances data accuracy while improving staff productivity through an intuitive dashboard interface.',
+    // repo: 'fajar-samudera',
+    imgSrc: [
+      '/static/images/projects/fajar-samudera-0.png',
+      '/static/images/projects/fajar-samudera-1.png',
+      '/static/images/projects/fajar-samudera-2.png',
+      '/static/images/projects/fajar-samudera-3.png',
+      '/static/images/projects/fajar-samudera-4.png',
+      '/static/images/projects/fajar-samudera-5.png',
+      '/static/images/projects/fajar-samudera-6.png',
+      '/static/images/projects/fajar-samudera-7.png',
+      '/static/images/projects/fajar-samudera-8.png',
+    ],
+    url: 'https://fajarsamudera.co.id/',
+    builtWith: [
+      'Typescript',
+      'React',
+      'Next.js',
+      'tRPC',
+      'Tanstact Query',
+      'Prisma ORM',
+      'NGINX',
+      'MySQL',
+    ],
+  },
   {
     type: 'work',
     title: 'CRM (Customer Relationship Management)',
@@ -98,7 +127,7 @@ export let projectsData: Project[] = [
       'Typescript',
       'React',
       'Next.js',
-      'TRPC',
+      'tRPC',
       'Tanstact Query',
       'Socket.io',
       'Tailwind',
@@ -129,7 +158,7 @@ export let projectsData: Project[] = [
       'Sentry',
       'Tailwind',
       'Shadcn UI',
-      'TRPC',
+      'tRPC',
       'Tanstack Query',
       'Socket.io',
       'Prisma ORM',
@@ -182,7 +211,7 @@ export let projectsData: Project[] = [
   },
 ]
 
-export let experienceData: Company[] = [
+export const experienceData: Company[] = [
   {
     name: 'Pipeline',
     location: 'South Jakarta - Indonesia',
@@ -216,7 +245,7 @@ export let experienceData: Company[] = [
   },
 ]
 
-export let skillsData: Skill[] = [
+export const skillsData: Skill[] = [
   {
     name: 'Javascript',
     id: 'javascript',
